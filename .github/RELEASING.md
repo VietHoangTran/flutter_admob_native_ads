@@ -4,9 +4,9 @@ Each release starts in a pull request. Before opening a new PR, increase the
 version in `pubspec.yaml`, set the same version in the iOS podspec, and add a
 dated section to `CHANGELOG.md`. Use a patch version for fixes, minor for
 compatible features, and major for breaking changes. Updates to the same PR
-keep its version unless upstream has already used that version.
+keep its version unless `main` has already used that version.
 
-After merge to upstream `main`, CI runs formatting, release automation tests,
+After merge to `main` in the personal repository, CI runs formatting, release automation tests,
 Flutter analysis, Flutter tests, and a publish dry-run. Only after those checks
 pass does its release job create `v<version>` at the tested commit and dispatch
 `publish.yml` on that tag. Publishing repeats analysis, tests, and the dry-run
@@ -20,7 +20,7 @@ Fork CI and pull request builds cannot start the release job.
 
 On the package's **Admin > Automated publishing** page, configure:
 
-- GitHub repository: `TQC-Solution/flutter_admob_native_ads`
+- GitHub repository: `VietHoangTran/flutter_admob_native_ads`
 - Tag pattern: `v{{version}}`
 - **Enable publishing from `workflow_dispatch` events**: enabled
 - Keep tag push publishing enabled if manual tag pushes should still work.
@@ -47,7 +47,7 @@ For a failed upload, re-run the failed publish workflow or dispatch it on the
 existing tag:
 
 ```sh
-gh workflow run publish.yml --repo TQC-Solution/flutter_admob_native_ads --ref v1.1.1
+gh workflow run publish.yml --repo VietHoangTran/flutter_admob_native_ads --ref v1.1.2
 ```
 
 If source changes are needed, use a new version in another PR. Published
