@@ -2,11 +2,11 @@ const fs = require('node:fs');
 
 module.exports = async function release({ github, context, core, fetchImpl = fetch }) {
   const pubspec = fs.readFileSync('pubspec.yaml', 'utf8');
-  const version = pubspec.match(/^version:\s*((?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*))\s*$/m)?.[1];
-  if (!version) throw new Error('pubspec.yaml must declare a stable major.minor.patch version');
+  const version = pubspec.match(/^version:\s*((?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:\+(?:0|[1-9]\d*))?)\s*$/m)?.[1];
+  if (!version) throw new Error('pubspec.yaml must declare a stable major.minor.patch version with optional +build');
   const podspec = fs.readFileSync('ios/flutter_admob_native_ads.podspec', 'utf8');
-  if (podspec.match(/s\.version\s*=\s*'([^']+)'/)?.[1] !== version) {
-    throw new Error('The iOS podspec version must match pubspec.yaml');
+  if (podspec.match(/s\.version\s*=\s*'([^']+)'/)?.[1] !== version.split('+')[0]) {
+    throw new Error('The iOS podspec version must match the base pubspec.yaml version');
   }
   const changelog = fs.readFileSync('CHANGELOG.md', 'utf8');
   if (!changelog.includes(`## [${version}] - `)) {
@@ -26,7 +26,7 @@ module.exports = async function release({ github, context, core, fetchImpl = fet
     return;
   }
 
-  const response = await fetchImpl(`https://pub.dev/api/packages/flutter_admob_native_ads/versions/${version}`);
+  const response = await fetchImpl(`https://pub.dev/api/packages/flutter_admob_native_ads/versions/${encodeURIComponent(version)}`);
   if (response.ok) {
     core.notice(`${version} is already published. Skipping.`);
     return;

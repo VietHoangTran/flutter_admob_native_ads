@@ -15,7 +15,7 @@ preloading, and 12 customizable native layouts.
 
 ```yaml
 dependencies:
-  flutter_admob_native_ads: ^1.1.4
+  flutter_admob_native_ads: ^1.1.3+1
 ```
 
 Run `flutter pub get`, then configure your AdMob **App ID** on both platforms.

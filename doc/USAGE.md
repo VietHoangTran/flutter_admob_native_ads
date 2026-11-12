@@ -2,7 +2,7 @@
 
 Production-ready Flutter plugin for displaying Google AdMob Native Ads with 12 customizable layout forms and SwiftUI-style declarative styling. 100% native rendering via Platform Views with full Android/iOS parity.
 
-[![Version](https://img.shields.io/badge/version-1.1.4-blue.svg)](https://github.com/VietHoangTran/flutter_admob_native_ads)
+[![Version](https://img.shields.io/badge/version-1.1.3%2B1-blue.svg)](https://github.com/VietHoangTran/flutter_admob_native_ads)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE)
 
 ## Features
@@ -49,7 +49,7 @@ BannerAdWidget(
 ```yaml
 # pubspec.yaml
 dependencies:
-  flutter_admob_native_ads: ^1.1.4
+  flutter_admob_native_ads: ^1.1.3+1
 ```
 
 Run `flutter pub get`
