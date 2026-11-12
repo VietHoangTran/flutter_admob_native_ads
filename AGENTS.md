@@ -5,10 +5,9 @@
 - Before creating a new PR, increase the package version in `pubspec.yaml` from
   the current `origin/main` version: patch for compatible fixes, minor for
   compatible features, and major for breaking changes.
-- Use a stable `major.minor.patch` version, optionally with a numeric `+build`
-  suffix for documentation revisions (for example, `1.1.3+1`). The iOS podspec
-  uses only the base version (`1.1.3`), because CocoaPods rejects `+build`.
-  Add a dated release section using the full package version to `CHANGELOG.md`.
+- Use a stable `major.minor.patch` version. Keep the version in
+  `ios/flutter_admob_native_ads.podspec` identical and add a dated release section
+  to `CHANGELOG.md`.
 - Update this package's path dependency version in `example/pubspec.lock` too,
   so `flutter pub get` does not modify a tracked file during CI.
 - Keep the same version when updating an existing PR, unless `origin/main`

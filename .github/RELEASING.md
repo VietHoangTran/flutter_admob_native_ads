@@ -1,11 +1,8 @@
 # Releasing to pub.dev
 
 Each release starts in a pull request. Before opening a new PR, increase the
-version in `pubspec.yaml`, set its base version in the iOS podspec, and add a
-dated section to `CHANGELOG.md`. Documentation revisions may use a numeric
-build suffix such as `1.1.3+1`; the podspec stays at `1.1.3`. The example
-lockfile, changelog, version tag (`v1.1.3+1`), and publish validation retain
-the full version, including the build suffix. Use a patch version for fixes, minor for
+version in `pubspec.yaml`, set the same version in the iOS podspec, and add a
+dated section to `CHANGELOG.md`. Use a patch version for fixes, minor for
 compatible features, and major for breaking changes. Updates to the same PR
 keep its version unless `main` has already used that version.
 

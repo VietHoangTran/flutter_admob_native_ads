@@ -1,7 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
-const { execFileSync } = require('node:child_process');
 const release = require('./release.cjs');
 const version = fs.readFileSync('pubspec.yaml', 'utf8').match(/^version: (.+)$/m)[1];
 const tag = `v${version}`;
@@ -39,7 +38,7 @@ test('new version tags the tested SHA and explicitly dispatches on that tag', as
   const { args, calls, repo } = fixture();
   await release(args);
   assert.deepEqual(calls, [
-    ['check', `https://pub.dev/api/packages/flutter_admob_native_ads/versions/${encodeURIComponent(version)}`],
+    ['check', `https://pub.dev/api/packages/flutter_admob_native_ads/versions/${version}`],
     ['tag', { ...repo, ref: `refs/tags/${tag}`, sha: 'tested-commit' }],
     ['dispatch', { ...repo, workflow_id: 'publish.yml', ref: tag }],
   ]);
@@ -103,35 +102,4 @@ test('missing release notes fail before release', async (t) => {
     path === 'CHANGELOG.md' ? '# Changelog\n' : read(path, encoding));
   await assert.rejects(release(args), /dated release section/);
   assert.deepEqual(calls, []);
-});
-
-for (const candidate of ['1.2.3', '1.2.3+4']) {
-  test(`preserves full version ${candidate} in tags and dispatch with a base podspec`, async (t) => {
-    const { args, calls, repo } = fixture();
-    const files = {
-      'pubspec.yaml': `version: ${candidate}\n`,
-      'ios/flutter_admob_native_ads.podspec': "s.version = '1.2.3'",
-      'CHANGELOG.md': `## [${candidate}] - 2026-11-12\n`,
-    };
-    t.mock.method(fs, 'readFileSync', (path) => files[path]);
-    await release(args);
-    assert.deepEqual(calls, [
-      ['check', `https://pub.dev/api/packages/flutter_admob_native_ads/versions/${encodeURIComponent(candidate)}`],
-      ['tag', { ...repo, ref: `refs/tags/v${candidate}`, sha: 'tested-commit' }],
-      ['dispatch', { ...repo, workflow_id: 'publish.yml', ref: `v${candidate}` }],
-    ]);
-  });
-}
-
-test('publish workflow verifies the full version including the build suffix', () => {
-  const workflow = fs.readFileSync('.github/workflows/publish.yml', 'utf8');
-  const block = workflow.match(/      - name: Verify tag matches pubspec version\n        run: \|\n([\s\S]*?)(?=\n      - name:)/)[1];
-  const script = block.split('\n').map((line) => line.slice(10)).join('\n');
-  const run = (ref) => execFileSync('bash', ['-e', '-c', script], {
-    env: { ...process.env, GITHUB_REF_NAME: ref },
-    stdio: 'pipe',
-  });
-  assert.doesNotThrow(() => run(tag));
-  const wrongVersion = version.includes('+') ? version.split('+')[0] : `${version}+1`;
-  assert.throws(() => run(`v${wrongVersion}`));
 });
