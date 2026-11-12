@@ -39,13 +39,13 @@ App IDs contain `~`; the ad unit IDs used in widgets contain `/`.
 
 Initialize Google Mobile Ads in `AppDelegate` with
 `MobileAds.shared.start(completionHandler: nil)`.
-See the [complete platform setup](docs/USAGE.md#installation) for the AppDelegate
+See the [complete platform setup](doc/USAGE.md#installation) for the AppDelegate
 example and CocoaPods instructions.
 
 ## Native Ads with Auto Reload
 
 Use Google test ad unit IDs during development; replace the placeholder below
-with the appropriate platform's [native test ID](docs/USAGE.md#native-ads-1).
+with the appropriate platform's [native test ID](doc/USAGE.md#native-ads-1).
 
 ```dart
 import 'package:flutter_admob_native_ads/flutter_admob_native_ads.dart';
@@ -67,7 +67,7 @@ Omit `style` to follow the Flutter light/dark theme, or provide a
 
 ## Banner Ads with Auto Reload
 
-Use the platform's [banner test ID](docs/USAGE.md#banner-ads-1) during development.
+Use the platform's [banner test ID](doc/USAGE.md#banner-ads-1) during development.
 
 ```dart
 BannerAdWidget(
@@ -96,7 +96,7 @@ network is available. Failed reloads use the configured retry delay.
 The widgets track visibility automatically; their default `visibilityThreshold`
 is `0.5`. For manual loading, preloading, or explicit `reload()` calls, use a
 `NativeAdController` or `BannerAdController` as shown in the
-[usage guide](docs/USAGE.md#basic-usage-with-controller).
+[usage guide](doc/USAGE.md#basic-usage-with-controller).
 
 ## Layout Previews
 
@@ -124,10 +124,10 @@ This reference is separate from the 12 supported forms.
 
 ## More Examples
 
-- [All layout forms and recommended heights](docs/USAGE.md#layout-forms)
-- [Preload native ads](docs/USAGE.md#preload-for-instant-display) · [Preload banners](docs/USAGE.md#preload-banner)
-- [Custom styling](docs/USAGE.md#custom-styling) · [Callbacks and API](docs/USAGE.md#api-reference)
-- [Runnable example app](example) · [Live template gallery](docs/USAGE.md#reference-template-gallery)
+- [All layout forms and recommended heights](doc/USAGE.md#layout-forms)
+- [Preload native ads](doc/USAGE.md#preload-for-instant-display) · [Preload banners](doc/USAGE.md#preload-banner)
+- [Custom styling](doc/USAGE.md#custom-styling) · [Callbacks and API](doc/USAGE.md#api-reference)
+- [Runnable example app](example) · [Live template gallery](doc/USAGE.md#reference-template-gallery)
 - [Issues and feedback](https://github.com/VietHoangTran/flutter_admob_native_ads/issues)
 
 MIT License — see [LICENSE](LICENSE). Maintained by
