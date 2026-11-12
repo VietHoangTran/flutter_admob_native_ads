@@ -4,14 +4,14 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_admob_native_ads'
-  s.version          = '1.1.1'
+  s.version          = '1.1.2'
   s.summary          = 'Flutter plugin for displaying AdMob Native Ads with customizable layouts.'
   s.description      = <<-DESC
 A Flutter plugin for displaying AdMob Native Ads with customizable layouts
 and SwiftUI-style declarative styling. Supports compact, standard, and
 full media layout types with comprehensive styling options.
                        DESC
-  s.homepage         = 'https://github.com/tqc/flutter_admob_native_ads'
+  s.homepage         = 'https://github.com/VietHoangTran/flutter_admob_native_ads'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'TQC' => 'dev@tqc.com' }
   s.source           = { :path => '.' }

@@ -7,7 +7,7 @@ const tag = `v${version}`;
 
 function fixture({ sha, refStatus = 404, pubStatus = 404, dispatchError } = {}) {
   const calls = [];
-  const repo = { owner: 'TQC-Solution', repo: 'flutter_admob_native_ads' };
+  const repo = { owner: 'VietHoangTran', repo: 'flutter_admob_native_ads' };
   const args = {
     context: { repo, sha: 'tested-commit' },
     core: { notice() {} },

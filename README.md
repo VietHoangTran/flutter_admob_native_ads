@@ -2,7 +2,7 @@
 
 Production-ready Flutter plugin for displaying Google AdMob Native Ads with 12 customizable layout forms and SwiftUI-style declarative styling. 100% native rendering via Platform Views with full Android/iOS parity.
 
-[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/TQC-Solution/flutter_admob_native_ads)
+[![Version](https://img.shields.io/badge/version-1.1.2-blue.svg)](https://github.com/VietHoangTran/flutter_admob_native_ads)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 ## Features
@@ -910,7 +910,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Support
 
-- **Repository:** https://github.com/TQC-Solution/flutter_admob_native_ads
+- **Repository:** https://github.com/VietHoangTran/flutter_admob_native_ads
 - **Issues:** Report via GitHub Issues
 - **Pull Requests:** Welcome with detailed descriptions
 

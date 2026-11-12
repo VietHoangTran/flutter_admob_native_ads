@@ -45,7 +45,7 @@ jobs:
   release:
     name: Tag and publish new version
     needs: analyze-and-test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'TQC-Solution/flutter_admob_native_ads'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'VietHoangTran/flutter_admob_native_ads'
     runs-on: ubuntu-latest
     permissions:
       contents: write
