@@ -2,7 +2,7 @@
 
 Production-ready Flutter plugin for displaying Google AdMob Native Ads with 12 customizable layout forms and SwiftUI-style declarative styling. 100% native rendering via Platform Views with full Android/iOS parity.
 
-[![Version](https://img.shields.io/badge/version-1.1.3-blue.svg)](https://github.com/VietHoangTran/flutter_admob_native_ads)
+[![Version](https://img.shields.io/badge/version-1.1.4-blue.svg)](https://github.com/VietHoangTran/flutter_admob_native_ads)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 ## Features
@@ -138,6 +138,30 @@ The plugin provides 12 pre-designed layouts optimized for different use cases:
 | **form10** | 120dp | Text-only | Minimal design |
 | **form11** | 254dp | Vertical clean | Clean layout |
 | **form12** | 248dp | Vertical alternative | Alternative layout |
+
+### Layout Previews
+
+Browse the design references for all 12 forms below. These images come from
+[`ads_template_native`](https://github.com/VietHoangTran/flutter_admob_native_ads/tree/main/ads_template_native).
+Actual ad content, colors, media proportions, and CTA labels depend on the ad
+returned by the SDK and your `NativeAdStyle` settings.
+
+| **form1** | **form2** | **form3** |
+| --- | --- | --- |
+| ![Native ad form1 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_1.png) | ![Native ad form2 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_2.png) | ![Native ad form3 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_3.png) |
+| **form4** | **form5** | **form6** |
+| ![Native ad form4 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_4.png) | ![Native ad form5 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_5.png) | ![Native ad form6 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_6.png) |
+| **form7** | **form8** | **form9** |
+| ![Native ad form7 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_7.png) | ![Native ad form8 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_8.png) | ![Native ad form9 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_9.png) |
+| **form10** | **form11** | **form12** |
+| ![Native ad form10 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_10.png) | ![Native ad form11 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_11.png) | ![Native ad form12 design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_12.png) |
+
+#### Full-screen Design Reference
+
+The folder also includes this additional full-screen design reference. It is
+separate from the 12 supported layout forms listed above.
+
+![Full-screen native ad design reference](https://raw.githubusercontent.com/VietHoangTran/flutter_admob_native_ads/main/ads_template_native/ad_full.png)
 
 ### Basic Usage with Controller
 
