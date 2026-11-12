@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.4] - 2026-11-12
 
+### Changed
+- Shorten the README and introduce automatic reload examples for native and banner ads; move detailed documentation to `docs/USAGE.md`.
+
 ### Added
 - Add inline README previews for all 12 native ad layout references and the additional full-screen design reference.
 
