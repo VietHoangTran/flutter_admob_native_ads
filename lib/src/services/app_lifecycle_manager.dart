@@ -62,6 +62,8 @@ class AppLifecycleManager with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (_foregroundController.isClosed) return;
+
     final wasInForeground = _isInForeground;
     _isInForeground = state == AppLifecycleState.resumed;
 
