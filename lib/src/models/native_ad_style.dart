@@ -93,8 +93,10 @@ class NativeAdStyle {
     this.adLabelTextColor = const Color(0xFFFFFFFF),
     this.adLabelFontSize = 10,
     this.adLabelCornerRadius = 4,
-    this.adLabelPadding =
-        const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+    this.adLabelPadding = const EdgeInsets.symmetric(
+      horizontal: 4,
+      vertical: 2,
+    ),
   }) : _cachedMap = null;
 
   // ============== CTA Button Styling ==============

@@ -58,8 +58,8 @@ class NativeAdController extends Object with AdControllerMixin<NativeAdState> {
   NativeAdController({
     required this.options,
     this.events = const NativeAdEvents(),
-  })  : _id = _generateId(),
-        _state = NativeAdState.initial {
+  }) : _id = _generateId(),
+       _state = NativeAdState.initial {
     // Register controller in global registry for method call dispatching
     // Changed from List.add to Map assignment for O(1) performance
     _controllerRegistry[_id] = this;
@@ -188,7 +188,8 @@ class NativeAdController extends Object with AdControllerMixin<NativeAdState> {
   String get disposeMethodName => 'disposeAd';
 
   @override
-  void Function() get onAdLoadedCallback => () => events.onAdLoaded?.call();
+  void Function() get onAdLoadedCallback =>
+      () => events.onAdLoaded?.call();
 
   @override
   void Function() get onLoadAttemptStartedCallback =>
@@ -199,17 +200,20 @@ class NativeAdController extends Object with AdControllerMixin<NativeAdState> {
       (error, code) => events.onAdFailed?.call(error, code);
 
   @override
-  void Function() get onAdClickedCallback => () => events.onAdClicked?.call();
+  void Function() get onAdClickedCallback =>
+      () => events.onAdClicked?.call();
 
   @override
   void Function() get onAdImpressionCallback =>
       () => events.onAdImpression?.call();
 
   @override
-  void Function() get onAdOpenedCallback => () => events.onAdOpened?.call();
+  void Function() get onAdOpenedCallback =>
+      () => events.onAdOpened?.call();
 
   @override
-  void Function() get onAdClosedCallback => () => events.onAdClosed?.call();
+  void Function() get onAdClosedCallback =>
+      () => events.onAdClosed?.call();
 
   @override
   void handleAdPaid(double value, String currency) {

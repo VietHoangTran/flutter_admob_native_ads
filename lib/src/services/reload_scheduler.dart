@@ -94,28 +94,28 @@ class ReloadScheduler {
   /// Initializes the scheduler and starts listening to lifecycle and network changes.
   void initialize() {
     // Listen to app foreground/background changes
-    _lifecycleSubscription = lifecycleManager.foregroundStream.listen(
-      (inForeground) {
-        if (inForeground && _isAdVisible) {
-          _log('📱 App resumed with visible ad, checking for reload...');
-          // Don't auto-trigger reload on resume, wait for remote config or manual trigger
-        } else if (!inForeground) {
-          _log('📱 App entered background, pausing reload logic');
-          _cancelPendingOperations();
-        }
-      },
-    );
+    _lifecycleSubscription = lifecycleManager.foregroundStream.listen((
+      inForeground,
+    ) {
+      if (inForeground && _isAdVisible) {
+        _log('📱 App resumed with visible ad, checking for reload...');
+        // Don't auto-trigger reload on resume, wait for remote config or manual trigger
+      } else if (!inForeground) {
+        _log('📱 App entered background, pausing reload logic');
+        _cancelPendingOperations();
+      }
+    });
 
     // Listen to network connectivity changes
-    _networkSubscription = networkManager.connectivityStream.listen(
-      (connected) {
-        if (connected && _isAdVisible) {
-          _log('🌐 Connection restored with visible ad');
-        } else if (!connected) {
-          _log('🌐 Connection lost');
-        }
-      },
-    );
+    _networkSubscription = networkManager.connectivityStream.listen((
+      connected,
+    ) {
+      if (connected && _isAdVisible) {
+        _log('🌐 Connection restored with visible ad');
+      } else if (!connected) {
+        _log('🌐 Connection lost');
+      }
+    });
 
     // Start remote config timer if interval is set
     _startRemoteConfigTimer();
@@ -140,13 +140,10 @@ class ReloadScheduler {
   void updateReloadInterval(int? seconds) {
     _remoteConfigTimer?.cancel();
     if (seconds != null && seconds > 0) {
-      _remoteConfigTimer = Timer.periodic(
-        Duration(seconds: seconds),
-        (_) {
-          _log('⏰ Remote config timer triggered (${seconds}s)');
-          triggerReload();
-        },
-      );
+      _remoteConfigTimer = Timer.periodic(Duration(seconds: seconds), (_) {
+        _log('⏰ Remote config timer triggered (${seconds}s)');
+        triggerReload();
+      });
       _log('⏰ Remote config interval updated: ${seconds}s');
     }
   }
@@ -292,14 +289,11 @@ class ReloadScheduler {
     // Schedule retry with delay
     _log('⏰ Scheduling retry in ${retryDelaySeconds}s...');
     _retryTimer?.cancel();
-    _retryTimer = Timer(
-      Duration(seconds: retryDelaySeconds),
-      () {
-        if (_isDisposed) return;
-        _log('🔄 Retry after ${retryDelaySeconds}s delay');
-        triggerReload();
-      },
-    );
+    _retryTimer = Timer(Duration(seconds: retryDelaySeconds), () {
+      if (_isDisposed) return;
+      _log('🔄 Retry after ${retryDelaySeconds}s delay');
+      triggerReload();
+    });
   }
 
   void _cancelPendingOperations() {

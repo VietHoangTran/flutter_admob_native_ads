@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -187,14 +187,16 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
 
     // Update events if using external controller
     if (!_ownsController) {
-      _controller.updateEvents(BannerAdEvents(
-        onLoadAttemptStarted: widget.onLoadAttemptStarted,
-        onAdLoaded: _handleAdLoaded,
-        onAdFailed: _handleAdFailed,
-        onAdClicked: widget.onAdClicked,
-        onAdImpression: widget.onAdImpression,
-        onAdPaid: widget.onAdPaid,
-      ));
+      _controller.updateEvents(
+        BannerAdEvents(
+          onLoadAttemptStarted: widget.onLoadAttemptStarted,
+          onAdLoaded: _handleAdLoaded,
+          onAdFailed: _handleAdFailed,
+          onAdClicked: widget.onAdClicked,
+          onAdImpression: widget.onAdImpression,
+          onAdPaid: widget.onAdPaid,
+        ),
+      );
     }
 
     // Auto load if enabled and not already loaded/preloaded
@@ -241,10 +243,12 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
             _controller.updateVisibility(true);
 
             if (widget.options.enableDebugLogs) {
-              final visibleDuration =
-                  DateTime.now().difference(_becameVisibleAt!);
+              final visibleDuration = DateTime.now().difference(
+                _becameVisibleAt!,
+              );
               debugPrint(
-                  '[BannerAdWidget] Ad confirmed visible for 1 second (actual: ${visibleDuration.inMilliseconds}ms)');
+                '[BannerAdWidget] Ad confirmed visible for 1 second (actual: ${visibleDuration.inMilliseconds}ms)',
+              );
             }
           }
         }
@@ -293,11 +297,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     return VisibilityDetector(
       key: _visibilityKey,
       onVisibilityChanged: _handleVisibilityChanged,
-      child: SizedBox(
-        height: height,
-        width: width,
-        child: _buildContent(),
-      ),
+      child: SizedBox(height: height, width: width, child: _buildContent()),
     );
   }
 
@@ -324,9 +324,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     }
 
     // Use shimmer loading placeholder for smoother UX (same as native ads)
-    return BannerShimmerPlaceholder(
-      size: widget.options.size,
-    );
+    return BannerShimmerPlaceholder(size: widget.options.size);
   }
 
   Widget _buildErrorState(String error) {
@@ -352,9 +350,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
         creationParams: creationParams,
         creationParamsCodec: const StandardMessageCodec(),
         gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-          Factory<OneSequenceGestureRecognizer>(
-            () => AdGestureRecognizer(),
-          ),
+          Factory<OneSequenceGestureRecognizer>(() => AdGestureRecognizer()),
         },
       );
     } else if (Platform.isIOS) {
@@ -363,15 +359,11 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
         creationParams: creationParams,
         creationParamsCodec: const StandardMessageCodec(),
         gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-          Factory<OneSequenceGestureRecognizer>(
-            () => AdGestureRecognizer(),
-          ),
+          Factory<OneSequenceGestureRecognizer>(() => AdGestureRecognizer()),
         },
       );
     }
 
-    return const Center(
-      child: Text('Platform not supported'),
-    );
+    return const Center(child: Text('Platform not supported'));
   }
 }

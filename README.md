@@ -15,8 +15,13 @@ preloading, and 12 customizable native layouts.
 
 ```yaml
 dependencies:
-  flutter_admob_native_ads: ^1.1.4
+  flutter_admob_native_ads: ^1.1.6
 ```
+
+Requires Flutter 3.44+ and Dart 3.12+. Version 1.1.6 uses the standalone
+`material_ui` package. Add `material_ui: ^1.0.0` to your app dependencies and
+replace `package:flutter/material.dart` imports with
+`package:material_ui/material_ui.dart` so ad widgets inherit your app's theme.
 
 Run `flutter pub get`, then configure your AdMob **App ID** on both platforms.
 App IDs contain `~`; the ad unit IDs used in widgets contain `/`.

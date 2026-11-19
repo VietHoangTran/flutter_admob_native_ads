@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_admob_native_ads/flutter_admob_native_ads.dart';
 
 import '../constants/ad_constants.dart';

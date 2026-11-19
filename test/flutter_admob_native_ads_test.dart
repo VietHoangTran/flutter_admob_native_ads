@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_admob_native_ads/flutter_admob_native_ads.dart';
 
@@ -28,9 +28,7 @@ void main() {
 
   group('NativeAdOptions', () {
     test('creates with required parameters', () {
-      final options = NativeAdOptions(
-        adUnitId: 'ca-app-pub-xxx/xxx',
-      );
+      final options = NativeAdOptions(adUnitId: 'ca-app-pub-xxx/xxx');
 
       expect(options.adUnitId, 'ca-app-pub-xxx/xxx');
       expect(options.layoutType, NativeAdLayoutType.form1);
@@ -43,9 +41,7 @@ void main() {
       );
       expect(validOptions.isValidAdUnitId, true);
 
-      final invalidOptions = NativeAdOptions(
-        adUnitId: '',
-      );
+      final invalidOptions = NativeAdOptions(adUnitId: '');
       expect(invalidOptions.isValidAdUnitId, false);
     });
 
@@ -71,9 +67,7 @@ void main() {
         layoutType: NativeAdLayoutType.form1,
       );
 
-      final copied = options.copyWith(
-        enableDebugLogs: true,
-      );
+      final copied = options.copyWith(enableDebugLogs: true);
 
       expect(copied.adUnitId, 'original-ad-unit');
       expect(copied.layoutType, NativeAdLayoutType.form1);
@@ -166,7 +160,7 @@ void main() {
 
       final events = NativeAdEvents(
         onAdLoaded: () => loaded = true,
-        onAdFailed: (_, __) => failed = true,
+        onAdFailed: (_, _) => failed = true,
         onAdClicked: () => clicked = true,
       );
 
@@ -183,13 +177,9 @@ void main() {
       bool originalLoaded = false;
       bool newLoaded = false;
 
-      final original = NativeAdEvents(
-        onAdLoaded: () => originalLoaded = true,
-      );
+      final original = NativeAdEvents(onAdLoaded: () => originalLoaded = true);
 
-      final copied = original.copyWith(
-        onAdLoaded: () => newLoaded = true,
-      );
+      final copied = original.copyWith(onAdLoaded: () => newLoaded = true);
 
       copied.onAdLoaded?.call();
 

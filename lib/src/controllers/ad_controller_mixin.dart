@@ -181,12 +181,10 @@ mixin AdControllerMixin<TState> {
 
     // Subscribe to pause rendering events if we created a new lifecycle manager
     if (isNewLifecycleManager) {
-      _pauseRenderingSubscription =
-          lifecycleManager!.pauseRenderingStream.listen(
-        (shouldPause) {
-          _handlePauseRendering(shouldPause);
-        },
-      );
+      _pauseRenderingSubscription = lifecycleManager!.pauseRenderingStream
+          .listen((shouldPause) {
+            _handlePauseRendering(shouldPause);
+          });
     }
 
     // Reuse network manager from preload if available, otherwise create new
@@ -515,7 +513,8 @@ mixin AdControllerMixin<TState> {
 
     if (enableDebugLogs) {
       debugPrint(
-          '[$controllerType] $methodName (app lifecycle: ${shouldPause ? "background" : "foreground"})');
+        '[$controllerType] $methodName (app lifecycle: ${shouldPause ? "background" : "foreground"})',
+      );
     }
 
     channel.invokeMethod(methodName, {'controllerId': id}).catchError((e) {

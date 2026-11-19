@@ -34,8 +34,8 @@ class NativeAdOptions {
     this.requestTimeout,
     this.customExtras,
     this.testDeviceIds,
-  })  : _usesDefaultStyle = style == null,
-        style = style ?? NativeAdStyle();
+  }) : _usesDefaultStyle = style == null,
+       style = style ?? NativeAdStyle();
 
   /// The AdMob ad unit ID.
   ///
@@ -133,10 +133,11 @@ class NativeAdOptions {
       'adUnitId': adUnitId,
       'layoutType': layoutType.toInt(),
       'layoutTypeName': layoutType.name,
-      'style': (_usesDefaultStyle && brightness == Brightness.dark
-              ? NativeAdStyle.dark()
-              : style)
-          .toMap(),
+      'style':
+          (_usesDefaultStyle && brightness == Brightness.dark
+                  ? NativeAdStyle.dark()
+                  : style)
+              .toMap(),
       'enableDebugLogs': enableDebugLogs,
       'enableSmartPreload': enableSmartPreload,
       'enableSmartReload': enableSmartReload,

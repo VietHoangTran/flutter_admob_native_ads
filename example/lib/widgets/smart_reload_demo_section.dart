@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Section demonstrating smart reload functionality
 class SmartReloadDemoSection extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:shimmer/shimmer.dart';
 import '../models/banner_ad_size.dart';
 
@@ -72,18 +72,10 @@ class BannerShimmerPlaceholder extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 14,
-                width: 120,
-                color: Colors.white,
-              ),
+              Container(height: 14, width: 120, color: Colors.white),
               if (size == BannerAdSize.leaderboard) ...[
                 const SizedBox(height: 4),
-                Container(
-                  height: 12,
-                  width: 80,
-                  color: Colors.white,
-                ),
+                Container(height: 12, width: 80, color: Colors.white),
               ],
             ],
           ),
@@ -181,17 +173,9 @@ class BannerShimmerPlaceholder extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 14,
-                width: 150,
-                color: Colors.white,
-              ),
+              Container(height: 14, width: 150, color: Colors.white),
               const SizedBox(height: 4),
-              Container(
-                height: 12,
-                width: 100,
-                color: Colors.white,
-              ),
+              Container(height: 12, width: 100, color: Colors.white),
             ],
           ),
         ),

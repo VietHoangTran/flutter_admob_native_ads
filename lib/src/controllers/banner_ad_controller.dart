@@ -58,8 +58,8 @@ class BannerAdController extends Object with AdControllerMixin<BannerAdState> {
   BannerAdController({
     required this.options,
     this.events = const BannerAdEvents(),
-  })  : _id = _generateId(),
-        _state = BannerAdState.initial {
+  }) : _id = _generateId(),
+       _state = BannerAdState.initial {
     // Register controller in global registry for method call dispatching
     // Changed from List.add to Map assignment for O(1) performance
     _bannerControllerRegistry[_id] = this;
@@ -188,7 +188,8 @@ class BannerAdController extends Object with AdControllerMixin<BannerAdState> {
   int? get reloadingStateIndex => BannerAdState.reloading.index;
 
   @override
-  void Function() get onAdLoadedCallback => () => events.onAdLoaded?.call();
+  void Function() get onAdLoadedCallback =>
+      () => events.onAdLoaded?.call();
 
   @override
   void Function() get onLoadAttemptStartedCallback =>
@@ -199,17 +200,20 @@ class BannerAdController extends Object with AdControllerMixin<BannerAdState> {
       (error, code) => events.onAdFailed?.call(error, code);
 
   @override
-  void Function() get onAdClickedCallback => () => events.onAdClicked?.call();
+  void Function() get onAdClickedCallback =>
+      () => events.onAdClicked?.call();
 
   @override
   void Function() get onAdImpressionCallback =>
       () => events.onAdImpression?.call();
 
   @override
-  void Function() get onAdOpenedCallback => () => events.onAdOpened?.call();
+  void Function() get onAdOpenedCallback =>
+      () => events.onAdOpened?.call();
 
   @override
-  void Function() get onAdClosedCallback => () => events.onAdClosed?.call();
+  void Function() get onAdClosedCallback =>
+      () => events.onAdClosed?.call();
 
   @override
   void handleAdPaid(double value, String currency) {

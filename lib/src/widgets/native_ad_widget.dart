@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -59,9 +59,9 @@ class NativeAdWidget extends StatefulWidget {
     this.autoLoad = true,
     this.visibilityThreshold = 0.5,
   }) : assert(
-          options != null || controller != null,
-          'Either options or controller must be provided.',
-        );
+         options != null || controller != null,
+         'Either options or controller must be provided.',
+       );
 
   /// Configuration options for the ad.
   ///
@@ -224,15 +224,17 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
 
     // Update events if using external controller
     if (!_ownsController) {
-      _controller.updateEvents(NativeAdEvents(
-        onLoadAttemptStarted: widget.onLoadAttemptStarted,
-        onAdLoaded: _handleAdLoaded,
-        onAdFailed: _handleAdFailed,
-        onAdClicked: widget.onAdClicked,
-        onAdImpression: widget.onAdImpression,
-        onAdPaid: widget.onAdPaid,
-        onCachedAdReady: _handleCachedAdReady,
-      ));
+      _controller.updateEvents(
+        NativeAdEvents(
+          onLoadAttemptStarted: widget.onLoadAttemptStarted,
+          onAdLoaded: _handleAdLoaded,
+          onAdFailed: _handleAdFailed,
+          onAdClicked: widget.onAdClicked,
+          onAdImpression: widget.onAdImpression,
+          onAdPaid: widget.onAdPaid,
+          onCachedAdReady: _handleCachedAdReady,
+        ),
+      );
     }
 
     // Auto load if enabled and not already loaded/preloaded
@@ -286,10 +288,12 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
             _controller.updateVisibility(true);
 
             if (_effectiveOptions.enableDebugLogs) {
-              final visibleDuration =
-                  DateTime.now().difference(_becameVisibleAt!);
+              final visibleDuration = DateTime.now().difference(
+                _becameVisibleAt!,
+              );
               debugPrint(
-                  '[NativeAdWidget] Ad confirmed visible for 1 second (actual: ${visibleDuration.inMilliseconds}ms)');
+                '[NativeAdWidget] Ad confirmed visible for 1 second (actual: ${visibleDuration.inMilliseconds}ms)',
+              );
             }
           }
         }
@@ -345,11 +349,7 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
     return VisibilityDetector(
       key: _visibilityKey,
       onVisibilityChanged: _handleVisibilityChanged,
-      child: SizedBox(
-        height: height,
-        width: width,
-        child: _buildContent(),
-      ),
+      child: SizedBox(height: height, width: width, child: _buildContent()),
     );
   }
 
@@ -371,9 +371,7 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
     }
 
     // Use shimmer loading placeholder for smoother UX
-    return ShimmerAdPlaceholder(
-      layoutType: _effectiveOptions.layoutType,
-    );
+    return ShimmerAdPlaceholder(layoutType: _effectiveOptions.layoutType);
   }
 
   Widget _buildErrorState(String error) {
@@ -406,9 +404,7 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
         creationParamsCodec: const StandardMessageCodec(),
         onPlatformViewCreated: _onPlatformViewCreated,
         gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-          Factory<OneSequenceGestureRecognizer>(
-            () => AdGestureRecognizer(),
-          ),
+          Factory<OneSequenceGestureRecognizer>(() => AdGestureRecognizer()),
         },
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
@@ -419,16 +415,12 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
         creationParamsCodec: const StandardMessageCodec(),
         onPlatformViewCreated: _onPlatformViewCreated,
         gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-          Factory<OneSequenceGestureRecognizer>(
-            () => AdGestureRecognizer(),
-          ),
+          Factory<OneSequenceGestureRecognizer>(() => AdGestureRecognizer()),
         },
       );
     }
 
-    return const Center(
-      child: Text('Platform not supported'),
-    );
+    return const Center(child: Text('Platform not supported'));
   }
 
   void _onPlatformViewCreated(int id) {

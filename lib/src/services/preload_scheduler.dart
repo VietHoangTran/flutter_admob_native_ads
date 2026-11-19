@@ -68,29 +68,29 @@ class PreloadScheduler {
   /// Initializes the scheduler and starts listening to lifecycle and network changes.
   void initialize() {
     // Listen to app foreground/background changes
-    _lifecycleSubscription = lifecycleManager.foregroundStream.listen(
-      (inForeground) {
-        if (inForeground) {
-          _log('📱 App entered foreground, re-evaluating...');
-          evaluateAndLoad();
-        } else {
-          _log('📱 App entered background');
-        }
-      },
-    );
+    _lifecycleSubscription = lifecycleManager.foregroundStream.listen((
+      inForeground,
+    ) {
+      if (inForeground) {
+        _log('📱 App entered foreground, re-evaluating...');
+        evaluateAndLoad();
+      } else {
+        _log('📱 App entered background');
+      }
+    });
 
     // Listen to network connectivity changes
-    _networkSubscription = networkManager.connectivityStream.listen(
-      (connected) {
-        if (connected) {
-          _log('🌐 Connection restored, resetting retry counter');
-          _retryCount = 0; // Reset per requirements
-          evaluateAndLoad();
-        } else {
-          _log('🌐 Connection lost');
-        }
-      },
-    );
+    _networkSubscription = networkManager.connectivityStream.listen((
+      connected,
+    ) {
+      if (connected) {
+        _log('🌐 Connection restored, resetting retry counter');
+        _retryCount = 0; // Reset per requirements
+        evaluateAndLoad();
+      } else {
+        _log('🌐 Connection lost');
+      }
+    });
   }
 
   /// LAYER 1: Awareness checks

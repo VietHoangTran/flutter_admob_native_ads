@@ -12,12 +12,7 @@ extension EdgeInsetsExtension on EdgeInsets {
   /// // Returns: {'top': 16.0, 'left': 16.0, 'bottom': 16.0, 'right': 16.0}
   /// ```
   Map<String, double> toMap() {
-    return {
-      'top': top,
-      'left': left,
-      'bottom': bottom,
-      'right': right,
-    };
+    return {'top': top, 'left': left, 'bottom': bottom, 'right': right};
   }
 
   /// Converts EdgeInsets to a list [top, left, bottom, right].

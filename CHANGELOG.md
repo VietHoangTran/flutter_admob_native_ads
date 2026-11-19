@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.6] - 2026-11-19
+
+### Changed
+- **Breaking:** Migrate Material widgets and theme lookups to `package:material_ui/material_ui.dart` to remove deprecated Flutter Material imports. Apps should migrate their Material imports too so ad widgets inherit the app theme.
+- Require Dart 3.12 and Flutter 3.44 or newer, matching the minimum requirements of `material_ui` 1.0.0.
+- Migrate the example app and widget tests to the standalone Material package.
+
 ## [1.1.5] - 2026-11-16
 
 ### Fixed
